@@ -4,7 +4,7 @@ class Assets {
   static const String us = 'assets/flags/us.png';
 
   /// [Image Paths].
-  static const String login = 'assets/images/login.jpg';
+  static const String login = 'assets/images/login.png';
   static const String horizonPlaceholder = 'assets/images/placeholder.png';
   static const String avatarPlaceholder = 'assets/images/profile-placeholder.png';
 
