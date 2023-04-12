@@ -15,28 +15,35 @@ class ProductController extends GetxController {
   final LocalProductRepository _localProductRepository =
       LocalProductRepository();
 
+  bool loading = false;
+  int currentPageIndex = 0;
   List<ProductDataModel> currentProductList = [];
-
-  Future<void> getProductList(int page) async {
+  Future<void> getProductList([int? index]) async {
     if (await isConnected()) {
       try {
-        final data = await _apiRepository.requestProductList(page);
+        if (loading || (index != null && index < currentPageIndex)) return;
+        loading = true;
+        final data = await _apiRepository.requestProductList(currentPageIndex);
         if (data != null) {
+          if (data.isNotEmpty) {
+            currentPageIndex = currentPageIndex + 1;
+            log(currentPageIndex.toString());
+          }
+          loading = false;
           currentProductList.addAll(data);
           _localProductRepository.addBatchProduct(data);
           update();
-          showToast("Product data added!");
         } else {
           showToast('Product fetch Error!');
         }
       } catch (e, s) {
         log("#ProductGet", error: e, stackTrace: s);
+        loading = false;
         if (e is RequestException) {
           showToast(e.msg);
           if (e.statusCode == 401) {
             HiveConfig.dispose();
             Get.offAll(() => const LoginScreen());
-            update();
           }
         } else {
           showToast(e.toString());
@@ -46,7 +53,7 @@ class ProductController extends GetxController {
       showToast('Connect to network to update product list!');
       currentProductList.clear();
       currentProductList.addAll(_localProductRepository.productList);
-      update();
     }
+    update();
   }
 }

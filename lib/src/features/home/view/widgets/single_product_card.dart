@@ -95,7 +95,7 @@ class SingleProductCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage(
+                      backgroundImage: const AssetImage(
                         Assets.avatarPlaceholder,
                       ),
                       foregroundImage: NetworkImage(

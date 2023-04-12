@@ -21,13 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).extension<ColorTheme>();
     return Scaffold(
-      body: PageView(
-        controller: controller,
-        physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          ProductPage(),
-          ProfilePage(),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: controller,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            ProductPage(),
+            ProfilePage(),
+          ],
+        ),
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

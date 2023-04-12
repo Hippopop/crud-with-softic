@@ -1,5 +1,4 @@
 import 'package:crud_with_softic/src/features/home/controller/product_controller.dart';
-import 'package:crud_with_softic/src/features/home/repository/models/product_data/product_data_model.dart';
 import 'package:crud_with_softic/src/services/theme/extensions/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,10 +15,24 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+  late final ScrollController _scrollController;
+  late ProductController controller;
   @override
   void initState() {
     super.initState();
-    Get.find<ProductController>().getProductList(0);
+    controller = Get.find<ProductController>();
+    _scrollController = ScrollController(keepScrollOffset: true);
+    controller.getProductList(0);
+    _scrollController.addListener(scrollListenerCallback);
+  }
+
+  scrollListenerCallback() {
+    if (_scrollController.hasClients) {
+      final triggerPoint = 0.85 * _scrollController.position.maxScrollExtent;
+      if (_scrollController.position.pixels > triggerPoint) {
+        controller.getProductList();
+      }
+    }
   }
 
   @override
@@ -53,13 +66,17 @@ class _ProductPageState extends State<ProductPage> {
           Expanded(
             child: GetBuilder<ProductController>(builder: (controller) {
               return GridView.builder(
+                controller: _scrollController,
+                padding: EdgeInsets.symmetric(vertical: 8),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    childAspectRatio: 9 / 14),
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  maxCrossAxisExtent: 300,
+                  childAspectRatio: 9 / 16,
+                ),
                 itemBuilder: (context, index) => SingleProductCard(
-                    productData: controller.currentProductList[index]),
+                  productData: controller.currentProductList[index],
+                ),
                 itemCount: controller.currentProductList.length,
               );
             }),
