@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:crud_with_softic/global/widgets/toast.dart';
+import 'package:crud_with_softic/src/global/widgets/toast.dart';
 import 'package:crud_with_softic/src/features/authentication/view/login_screen.dart';
 import 'package:crud_with_softic/src/features/home/repository/database/product_repository.dart';
 import 'package:crud_with_softic/src/features/home/repository/local/local_product_repository.dart';

@@ -1,4 +1,4 @@
-import 'package:crud_with_softic/global/widgets/pop_ups.dart';
+import 'package:crud_with_softic/src/global/widgets/pop_ups.dart';
 import 'package:crud_with_softic/src/services/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_with_softic/src/features/authentication/view/login_screen.dart';
@@ -30,39 +30,28 @@ class _AppMainSettingsState extends State<AppMainSettings> {
             ListTile(
               leading: const Icon(Icons.settings),
               title: Text("change_theme".tr),
-              trailing: Tooltip(
-                message: "Theme Mode",
-                textStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: colorTheme?.extraTextColor,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.find<ThemeController>().toggleAppTheme();
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffFFDB84),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Get.isDarkMode
-                        ? const Icon(
-                            Icons.dark_mode,
-                            size: 20,
-                            color: Colors.black,
-                          )
-                        : const Icon(
-                            Icons.light_mode,
-                            size: 20,
-                            color: Colors.black,
-                          ),
+              trailing: GestureDetector(
+                onTap: () {
+                  Get.find<ThemeController>().toggleAppTheme();
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffFFDB84),
+                    borderRadius: BorderRadius.circular(30),
                   ),
+                  child: Get.isDarkMode
+                      ? const Icon(
+                          Icons.dark_mode,
+                          size: 20,
+                          color: Colors.black,
+                        )
+                      : const Icon(
+                          Icons.light_mode,
+                          size: 20,
+                          color: Colors.black,
+                        ),
                 ),
               ),
             ),
@@ -91,13 +80,13 @@ class _AppMainSettingsState extends State<AppMainSettings> {
                 child: Text(
                   "logout".tr.toUpperCase(),
                   style: TextStyle(
-                    color: colorTheme?.white,
+                    color: colorTheme?.opposite,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
           ],
         ),
       ),

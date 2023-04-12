@@ -22,23 +22,25 @@ class ChooseLanguageScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 30),
                 const Padding(
-                    padding: EdgeInsets.only(left: 20, top: 10),
-                    child: Text(
-                      "Select your prefered language",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    )),
-                const SizedBox(height: 20),
-                const SizedBox(height: 20),
+                  padding: EdgeInsets.only(left: 20, top: 10),
+                  child: Text(
+                    "Select your prefered language",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(height: 40),
                 Expanded(
-                    child: ListView.builder(
-                        itemCount: languageController.languages.length,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) => _languageWidget(
-                            context: context,
-                            languageModel: languageController.languages[index],
-                            languageController: languageController,
-                            index: index))),
+                  child: ListView.builder(
+                    itemCount: languageController.languages.length,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) => _languageWidget(
+                      context: context,
+                      languageModel: languageController.languages[index],
+                      languageController: languageController,
+                      index: index,
+                    ),
+                  ),
+                ),
                 Row(
                   children: [
                     Expanded(

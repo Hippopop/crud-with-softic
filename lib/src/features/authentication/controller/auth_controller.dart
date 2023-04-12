@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:crud_with_softic/global/widgets/toast.dart';
+import 'package:crud_with_softic/src/global/widgets/toast.dart';
 import 'package:crud_with_softic/src/features/authentication/repository/database/auth_repository.dart';
 import 'package:crud_with_softic/src/features/authentication/repository/local/local_auth_repository.dart';
 import 'package:crud_with_softic/src/features/authentication/repository/models/login_request/login_request.dart';

@@ -58,7 +58,7 @@ class SingleProductCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 18,
-                color: colorTheme?.black,
+                color: colorTheme?.themeColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -89,7 +89,7 @@ class SingleProductCard extends StatelessWidget {
               children: [
                 DecoratedBox(
                   decoration: BoxDecoration(
-                    color: colorTheme?.white,
+                    color: colorTheme?.opposite,
                     shape: BoxShape.circle,
                   ),
                   child: Padding(

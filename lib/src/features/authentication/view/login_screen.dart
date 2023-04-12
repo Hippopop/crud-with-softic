@@ -1,6 +1,6 @@
-import 'package:crud_with_softic/global/widgets/loading_indicator.dart';
+import 'package:crud_with_softic/src/global/widgets/loading_indicator.dart';
 import 'package:crud_with_softic/src/constants/assets.dart';
-import 'package:crud_with_softic/global/widgets/toast.dart';
+import 'package:crud_with_softic/src/global/widgets/toast.dart';
 import 'package:crud_with_softic/src/features/home/view/home_screen.dart';
 import 'package:crud_with_softic/src/services/theme/extensions/color_theme.dart';
 import 'package:get/get.dart';
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "login".tr.toUpperCase(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: colorTheme?.white,
+                                  color: colorTheme?.opposite,
                                 ),
                               ),
                             ),

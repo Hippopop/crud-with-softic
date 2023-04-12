@@ -17,14 +17,21 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController controller = PageController(
     initialPage: 0,
   );
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).extension<ColorTheme>();
     return Scaffold(
-      backgroundColor: colorTheme?.black,
+      backgroundColor: colorTheme?.themeColor,
       body: SafeArea(
         bottom: false,
         child: PageView(
+          onPageChanged: (value) {
+            setState(() {
+              currentIndex =  value;
+            });
+          },
           controller: controller,
           physics: const NeverScrollableScrollPhysics(),
           children: const [
@@ -41,10 +48,13 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         child: Icon(
           Icons.add,
-          color: colorTheme?.black,
+          color: colorTheme?.themeColor,
         ),
       ),
-      bottomNavigationBar: NavBar(controller: controller),
+      bottomNavigationBar: NavBar(
+        controller: controller,
+        index: currentIndex,
+      ),
     );
   }
 }

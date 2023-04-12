@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'extensions/color_theme.dart';
 
 ThemeData light = ThemeData(
-  // useMaterial3: true,
-  // colorSchemeSeed: const Color(0xff3084F2),
   fontFamily: 'montserrat',
   brightness: Brightness.light,
   inputDecorationTheme: InputDecorationTheme(
@@ -14,8 +12,8 @@ ThemeData light = ThemeData(
   ),
   extensions: {
     ColorTheme(
-      white: Colors.black,
-      black: Colors.white,
+      opposite: Colors.black,
+      themeColor: Colors.white,
       extraColor: const Color(0xffF8B6C0),
       mainAccent: const Color(0xffF2B872),
       primaryColor: const Color(0xff3084F2),

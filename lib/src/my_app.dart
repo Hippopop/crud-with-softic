@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
     return GetBuilder<LocalizationController>(
       builder: (localizeController) {
         return GetBuilder<AuthController>(builder: (authController) {
-          return GetBuilder<ThemeController>(builder: (context) {
+          return GetBuilder<ThemeController>(builder: (themeController) {
             return GetMaterialApp(
               theme: light,
               darkTheme: dark,
-              themeMode: context.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              themeMode: themeController.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               title: 'CRUD with SOFTIC',
               locale: localizeController.locale,
               debugShowCheckedModeBanner: false,

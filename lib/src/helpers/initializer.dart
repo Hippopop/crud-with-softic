@@ -17,7 +17,7 @@ Future init(SharedPreferences prefs) async {
 
   // Controllers
   Get.put(ProductController());
-  Get.lazyPut(() => LanguageController());
+  Get.lazyPut(() => LanguageController(), fenix: true);
   final controller = Get.put(AuthController());
   if (controller.isAuthenticated) {
     Get.find<RequestHandler>().updateToken(token: controller.currentAuthToken!);

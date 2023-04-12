@@ -3,7 +3,8 @@ import 'package:crud_with_softic/src/services/theme/extensions/color_theme.dart'
 import 'package:get/get.dart';
 
 class NavBar extends StatelessWidget {
-  NavBar({super.key, required this.controller});
+  const NavBar({super.key, required this.controller, required this.index});
+  final int index;
   final PageController controller;
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class NavBar extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       shape: const CircularNotchedRectangle(),
       child: BottomNavigationBar(
-        currentIndex: ((controller.hasClients? controller.page : controller.initialPage) ?? 0).toInt(),
+        currentIndex: index,
         showUnselectedLabels: false,
         backgroundColor: colorTheme?.backgroundColor,
         selectedItemColor: colorTheme?.primaryColor,

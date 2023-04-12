@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ColorTheme extends ThemeExtension<ColorTheme> {
-  final Color white;
-  final Color black;
+  final Color opposite;
+  final Color themeColor;
   final Color extraColor;
   final Color mainAccent;
   final Color primaryColor;
@@ -11,8 +11,8 @@ class ColorTheme extends ThemeExtension<ColorTheme> {
   final Color extraTextColor;
   final Color backgroundColor;
   ColorTheme({
-    required this.black,
-    required this.white,
+    required this.themeColor,
+    required this.opposite,
     required this.extraColor,
     required this.mainAccent,
     required this.primaryColor,
@@ -35,8 +35,8 @@ class ColorTheme extends ThemeExtension<ColorTheme> {
     Color? backgroundColor,
   }) {
     return ColorTheme(
-      white: white ?? this.white,
-      black: black ?? this.black,
+      opposite: white ?? this.opposite,
+      themeColor: black ?? this.themeColor,
       mainAccent: mainAccent ?? this.mainAccent,
       extraColor: extraColor ?? this.extraColor,
       primaryColor: primaryColor ?? this.primaryColor,
@@ -52,8 +52,8 @@ class ColorTheme extends ThemeExtension<ColorTheme> {
       covariant ThemeExtension<ColorTheme>? other, double t) {
     if (other is! ColorTheme) return this;
     return ColorTheme(
-      white: Color.lerp(white, other.white, t)!,
-      black: Color.lerp(black, other.black, t)!,
+      opposite: Color.lerp(opposite, other.opposite, t)!,
+      themeColor: Color.lerp(themeColor, other.themeColor, t)!,
       mainAccent: Color.lerp(mainAccent, other.mainAccent, t)!,
       extraColor: Color.lerp(extraColor, other.extraColor, t)!,
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t)!,

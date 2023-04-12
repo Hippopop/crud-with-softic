@@ -1,33 +1,31 @@
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:crud_with_softic/src/features/authentication/repository/models/login_request/login_request.dart';
 import 'package:crud_with_softic/src/features/authentication/repository/models/user_profile/user_profile.dart';
 import 'package:crud_with_softic/src/services/domain/localstorage/hive_config.dart';
 
 class LocalAuthRepo {
   final config = HiveConfig();
-  saveLoginCred(LoginRequest data) {
-    config.loginCredBox.clear();
-    config.loginCredBox.add(data);
-  }
+  static const tokenKey = '#TOKEN_KEY';
+  static const loginCredKey = '#CRED_KEY';
+  static const profileKey = '#PROFILE_KEY';
 
-  saveToken(String token) {
-    config.tokenBox.clear();
-    config.tokenBox.add(token);
-  }
+  saveLoginCred(LoginRequest data) =>
+      config.loginCredBox.put(loginCredKey, data);
 
-  saveProfile(UserProfileModel profile) {
-    config.profileBox.clear();
-    config.profileBox.add(json.encode(profile.toJson()));
-  }
+  saveToken(String token) => config.tokenBox.put(tokenKey, token);
 
-  LoginRequest? get currentUserCred => config.loginCredBox.values.firstOrNull;
+  saveProfile(UserProfileModel profile) => config.profileBox.put(
+        profileKey,
+        json.encode(profile.toJson()),
+      );
 
-  String? get currentToken => config.tokenBox.values.firstOrNull;
+  LoginRequest? get currentUserCred => config.loginCredBox.get(loginCredKey);
+
+  String? get currentToken => config.tokenBox.get(tokenKey);
 
   UserProfileModel? get currentProfile {
-    String? data = config.profileBox.values.firstOrNull;
+    String? data = config.profileBox.get(profileKey);
     if (data != null) {
       return UserProfileModel.fromJson(json.decode(data));
     }
