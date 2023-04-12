@@ -28,7 +28,6 @@ class ProductRepository extends ApiRepository {
 
     if (res is! RequestException) {
       try {
-        log('${res.toString()}');
         return (res as List)
             .map(
               (e) => ProductDataModel.fromJson(

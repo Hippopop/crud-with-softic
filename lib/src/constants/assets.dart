@@ -5,6 +5,8 @@ class Assets {
 
   /// [Image Paths].
   static const String login = 'assets/images/login.jpg';
+  static const String horizonPlaceholder = 'assets/images/placeholder.png';
+  static const String avatarPlaceholder = 'assets/images/profile-placeholder.png';
 
   /// [Icon Paths].
   static const String done = 'assets/icons/done.png';
