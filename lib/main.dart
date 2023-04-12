@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'src/features/authentication/controller/auth_controller.dart';
 import 'src/services/localization/localization_controller.dart';
 import 'src/helpers/getit_locator.dart' as getit_locator;
-import 'global/routes/routes.dart';
 import 'src/services/localization/translate.dart';
 import 'src/features/authentication/view/login_screen.dart';
 import 'src/services/theme/dark_theme.dart';
@@ -40,7 +39,6 @@ class MyApp extends StatelessWidget {
               AppConstants.languages[0].languageCode!,
               AppConstants.languages[0].countryCode,
             ),
-            routes: routes,
             home: (authController.isAuthenticated)
                 ? const HomeScreen()
                 : const LoginScreen(),
