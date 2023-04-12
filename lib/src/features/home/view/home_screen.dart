@@ -21,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).extension<ColorTheme>();
     return Scaffold(
+      backgroundColor: colorTheme?.black,
       body: SafeArea(
+        bottom: false,
         child: PageView(
           controller: controller,
           physics: const NeverScrollableScrollPhysics(),
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         child: Icon(
           Icons.add,
-          color: colorTheme?.white,
+          color: colorTheme?.black,
         ),
       ),
       bottomNavigationBar: NavBar(controller: controller),

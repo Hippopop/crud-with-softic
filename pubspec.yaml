@@ -39,3 +39,8 @@ flutter:
     - family: montserrat
       fonts:
         - asset: assets/fonts/montserrat/Montserrat-Regular-400.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat/Montserrat-Bold-700.ttf
+          weight: 600
+        - asset: assets/fonts/montserrat/Montserrat-Black-900.ttf
+          weight: 900

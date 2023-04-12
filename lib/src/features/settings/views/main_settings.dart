@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+import 'package:crud_with_softic/global/widgets/pop_ups.dart';
+import 'package:crud_with_softic/src/services/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_with_softic/src/features/authentication/view/login_screen.dart';
 import 'package:get/get.dart';
-import '../theme/theme_controller.dart';
-import '../localization/choose_language_screen.dart';
+import 'choose_language_screen.dart';
 
 class AppMainSettings extends StatefulWidget {
   static const String screen = "AppMainSettings";
@@ -16,11 +16,12 @@ class AppMainSettings extends StatefulWidget {
 class _AppMainSettingsState extends State<AppMainSettings> {
   @override
   Widget build(BuildContext context) {
-    final ThemeController _themeController = Get.put(ThemeController());
-    print("theme data in main settings....");
-    print(_themeController.themeValue);
+    final colorTheme = Theme.of(context).extension<ColorTheme>();
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('settings'.tr),
+        backgroundColor: colorTheme?.primaryColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -28,13 +29,12 @@ class _AppMainSettingsState extends State<AppMainSettings> {
             //
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text("Change Theme"),
+              title: Text("change_theme".tr),
               trailing: Tooltip(
                 message: "Theme Mode",
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color(0xffFFDB84),
-                  fontFamily: "Montserrat",
+                  color: colorTheme?.extraTextColor,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.black,
@@ -42,9 +42,7 @@ class _AppMainSettingsState extends State<AppMainSettings> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _themeController.toggleTheme();
-                    });
+                    Get.find<ThemeController>().toggleAppTheme();
                   },
                   child: Container(
                     height: 40,
@@ -53,7 +51,7 @@ class _AppMainSettingsState extends State<AppMainSettings> {
                       color: const Color(0xffFFDB84),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: _themeController.themeValue
+                    child: Get.isDarkMode
                         ? const Icon(
                             Icons.dark_mode,
                             size: 20,
@@ -70,28 +68,36 @@ class _AppMainSettingsState extends State<AppMainSettings> {
             ),
 
             ListTile(
-                leading: const Icon(Icons.settings),
-                title: Text("choose_the_language".tr),
-                trailing: IconButton(
-                    onPressed: () {
-                      Get.to(() => ChooseLanguageScreen());
-                    },
-                    icon: Icon(Icons.arrow_forward_ios))),
-
-            ElevatedButton(
-              onPressed: () {
-                // Get.to(() => DemoScreen());
-              },
-              child: Text("Go next"),
-              // style: ButtonStyles.getThemeStyle(context),
-            ),
-
-            ElevatedButton(
-                // style: ButtonStyles.getThemeStyle(context),
+              leading: const Icon(Icons.settings),
+              title: Text("choose_the_language".tr),
+              trailing: IconButton(
                 onPressed: () {
-                  Get.to(() => LoginScreen());
+                  Get.to(() => const ChooseLanguageScreen());
                 },
-                child: Text("login".tr.toUpperCase())),
+                icon: const Icon(Icons.arrow_forward_ios),
+              ),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: colorTheme?.extraColor,
+                  padding: const EdgeInsets.all(14),
+                ),
+                onPressed: () async {
+                  await onWillPopLogout(context);
+                },
+                child: Text(
+                  "logout".tr.toUpperCase(),
+                  style: TextStyle(
+                    color: colorTheme?.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 12),
           ],
         ),
       ),

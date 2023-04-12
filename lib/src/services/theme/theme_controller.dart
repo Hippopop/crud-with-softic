@@ -1,29 +1,16 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:collection/collection.dart';
+import 'package:crud_with_softic/src/services/domain/localstorage/hive_config.dart';
 
-class ThemeController extends GetxController implements GetxService {
-  SharedPreferences? prefs;
-  ThemeController({this.prefs});
+class ThemeController extends GetxController {
+  final config = HiveConfig();
 
-  @override
-  onInit() async {
-    super.onInit();
-    _loadCurrentTheme();
-    update();
-  }
+  bool get isDarkMode => config.themeBox.values.firstOrNull ?? false;
 
-  bool _darkTheme = false;
-  bool get themeValue => _darkTheme;
-
-  void toggleTheme() {
-    _darkTheme = !_darkTheme;
-    prefs!.setBool("theme", _darkTheme);
-    update();
-  }
-
-  void _loadCurrentTheme() async {
-    prefs = await SharedPreferences.getInstance();
-    _darkTheme = prefs!.getBool("theme") ?? false;
+  toggleAppTheme() {
+    final oldValue = isDarkMode;
+    config.themeBox.clear();
+    config.themeBox.add(!oldValue);
     update();
   }
 }

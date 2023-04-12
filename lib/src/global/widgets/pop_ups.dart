@@ -1,21 +1,18 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:crud_with_softic/src/features/authentication/view/login_screen.dart';
+import 'package:crud_with_softic/src/services/domain/localstorage/hive_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-
-
-
-//* ============== |> onWillPop when logout <| ============== */
 Future<bool> onWillPopLogout(BuildContext context) async {
   return (await showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             elevation: 0,
-            title: const Center(
-              child: Text("Logout!!!"),
+            title: Center(
+              child: Text('${"logout".tr}?'),
             ),
             content: Text(
               "want_to_logout".tr,
@@ -37,7 +34,7 @@ Future<bool> onWillPopLogout(BuildContext context) async {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: const Text("Cancel"),
+                          child: Text("cancel".tr),
                         ),
                         const VerticalDivider(
                           width: 1.0,
@@ -46,17 +43,12 @@ Future<bool> onWillPopLogout(BuildContext context) async {
                         ),
                         TextButton(
                           onPressed: () async {
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            //await prefs.remove(AppConstants.token);
-                            await prefs.clear();
-                            // Get.offAll(() => const SigninScreen());
-
-                            // _authProvider.clearUserData();
+                            HiveConfig().dispose();
+                            Get.offAll(() => const LoginScreen());
                           },
-                          child: const Text(
-                            "Logout",
-                            style: TextStyle(
+                          child: Text(
+                            "logout".tr,
+                            style: const TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
                             ),
@@ -74,13 +66,11 @@ Future<bool> onWillPopLogout(BuildContext context) async {
       true;
 }
 
-//* ============== |> onWillPop when exit <| ============== */
 Future<bool> onWillPopExit(BuildContext context) async {
   return (await showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            // insetPadding: EdgeInsets.zero,
             elevation: 0,
             title: const Center(
               child: Text(
@@ -107,7 +97,7 @@ Future<bool> onWillPopExit(BuildContext context) async {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text("No"),
+                          child: const Text("No"),
                         ),
                         const VerticalDivider(
                           width: 1.0,

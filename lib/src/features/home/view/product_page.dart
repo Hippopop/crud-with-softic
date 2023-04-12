@@ -38,8 +38,7 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).extension<ColorTheme>();
-    return Container(
-      color: colorTheme?.backgroundColor,
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
@@ -50,13 +49,17 @@ class _ProductPageState extends State<ProductPage> {
                 color: colorTheme?.extraColor,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const SizedBox(
+              child: SizedBox(
                 width: double.infinity,
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
-                      'Your products',
+                      'your_product'.tr,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -67,7 +70,7 @@ class _ProductPageState extends State<ProductPage> {
             child: GetBuilder<ProductController>(builder: (controller) {
               return GridView.builder(
                 controller: _scrollController,
-                padding: EdgeInsets.symmetric(vertical: 8),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,

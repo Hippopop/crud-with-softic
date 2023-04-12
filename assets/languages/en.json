@@ -8,14 +8,19 @@
     "user_hint": "Mr. Example",
     "home" : "Home",
     "profile" : "Profile",
-
     "login": "Login",
+    "logout": "Logout",
+    "settings": "Settings",
+    "change_theme": "Change Theme",
+    "want_to_logout": "Confirm Logout.",
+"your_product": "Your products",
+
     "enter": "ENTER",
-    "continue": "CONTINUE",
     "password": "Password",
     "remember_me": "Remember Me",
     "log_out": "Log Out",
     "save": "Save",
     "cancel": "Cancel",
+    "continue": "CONTINUE",
     "choose_the_language": "Choose the language"
 }

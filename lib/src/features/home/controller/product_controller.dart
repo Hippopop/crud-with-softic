@@ -42,7 +42,7 @@ class ProductController extends GetxController {
         if (e is RequestException) {
           showToast(e.msg);
           if (e.statusCode == 401) {
-            HiveConfig.dispose();
+            HiveConfig().dispose();
             Get.offAll(() => const LoginScreen());
           }
         } else {

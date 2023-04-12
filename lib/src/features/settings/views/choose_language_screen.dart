@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:crud_with_softic/src/constants/app_constants.dart';
-import 'package:crud_with_softic/src/services/localization/language_controller.dart';
+import 'package:crud_with_softic/src/features/settings/controllers/language_controller.dart';
 import 'package:crud_with_softic/src/services/localization/localization_controller.dart';
 import 'package:crud_with_softic/src/constants/assets.dart';
 import 'package:crud_with_softic/src/services/localization/language_model.dart';
@@ -17,7 +17,6 @@ class ChooseLanguageScreen extends StatelessWidget {
       body: SafeArea(
         child: GetBuilder<LanguageController>(
           builder: (languageController) {
-            languageController.initializeAllLanguages(context);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -125,10 +124,9 @@ class ChooseLanguageScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  //Image.asset(languageModel.imageUrl!, width: 34, height: 34),
                   const SizedBox(width: 30),
                   Text(
-                    languageModel.languageName ?? 'Englisg',
+                    languageModel.languageName ?? 'English',
                   ),
                 ],
               ),

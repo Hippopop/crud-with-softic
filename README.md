@@ -8,10 +8,10 @@ This is a flutter applicaton demonstrating `CRUD` operation, with a database and
 1. Persistent `login` system.
 2. Auth `token` system.
 3. User `profile` data fetching.
-3. User `product` data fetching.
-3. User `product` data pagination.
-4. Proper `Theme` integration.
-5. Multi language support.
+4. User `product` data fetching.
+5. User `product` data pagination.
+6. Proper `Theme` integration.
+7. Multi language support.
 
 ## Goals
 
@@ -24,96 +24,96 @@ This project was made with a hybrid system of `bloc` and `Clean` architecture. M
 ```folder
 ./lib
 
-ª   main.dart
-ª
+|   main.dart
+|
 +---global
-ª   +---widgets
-ª           bottom_sheet.dart
-ª           loading_indicator.dart
-ª           pop_ups.dart
-ª           toast.dart
-ª
+|   +---widgets
+|           bottom_sheet.dart
+|           loading_indicator.dart
+|           pop_ups.dart
+|           toast.dart
+|
 +---src
     +---constants
-    ª       app_constants.dart
-    ª       assets.dart
-    ª
+    |       app_constants.dart
+    |       assets.dart
+    |
     +---features
-    ª   +---authentication
-    ª   ª   +---controller
-    ª   ª   ª       auth_controller.dart
-    ª   ª   ª
-    ª   ª   +---repository
-    ª   ª   ª   +---database
-    ª   ª   ª   ª       auth_repository.dart
-    ª   ª   ª   ª
-    ª   ª   ª   +---local
-    ª   ª   ª   ª       local_auth_repository.dart
-    ª   ª   ª   ª
-    ª   ª   ª   +---models
-    ª   ª   ª       +---login_request
-    ª   ª   ª       ª       login_request.dart
-    ª   ª   ª       ª       login_request.g.dart
-    ª   ª   ª       ª
-    ª   ª   ª       +---user_profile
-    ª   ª   ª               user_profile.dart
-    ª   ª   ª
-    ª   ª   +---view
-    ª   ª           login_screen.dart
-    ª   ª
-    ª   +---home
-    ª       +---controller
-    ª       ª       product_controller.dart
-    ª       ª
-    ª       +---repository
-    ª       ª   +---database
-    ª       ª   ª       product_repository.dart
-    ª       ª   ª
-    ª       ª   +---local
-    ª       ª   ª       local_product_repository.dart
-    ª       ª   ª
-    ª       ª   +---models
-    ª       ª       +---product_data
-    ª       ª               product_data_model.dart
-    ª       ª
-    ª       +---view
-    ª           ª   home_screen.dart
-    ª           ª   product_page.dart
-    ª           ª   profile_page.dart
-    ª           ª
-    ª           +---widgets
-    ª                   navbar.dart
-    ª                   single_product_card.dart
-    ª
+    |   +---authentication
+    |   |   +---controller
+    |   |   |       auth_controller.dart
+    |   |   |
+    |   |   +---repository
+    |   |   |   +---database
+    |   |   |   |       auth_repository.dart
+    |   |   |   |
+    |   |   |   +---local
+    |   |   |   |       local_auth_repository.dart
+    |   |   |   |
+    |   |   |   +---models
+    |   |   |       +---login_request
+    |   |   |       |       login_request.dart
+    |   |   |       |       login_request.g.dart
+    |   |   |       |
+    |   |   |       +---user_profile
+    |   |   |               user_profile.dart
+    |   |   |
+    |   |   +---view
+    |   |           login_screen.dart
+    |   |
+    |   +---home
+    |       +---controller
+    |       |       product_controller.dart
+    |       |
+    |       +---repository
+    |       |   +---database
+    |       |   |       product_repository.dart
+    |       |   |
+    |       |   +---local
+    |       |   |       local_product_repository.dart
+    |       |   |
+    |       |   +---models
+    |       |       +---product_data
+    |       |               product_data_model.dart
+    |       |
+    |       +---view
+    |           |   home_screen.dart
+    |           |   product_page.dart
+    |           |   profile_page.dart
+    |           |
+    |           +---widgets
+    |                   navbar.dart
+    |                   single_product_card.dart
+    |
     +---helpers
-    ª       connectivity_check.dart
-    ª       getit_locator.dart
-    ª
+    |       connectivity_check.dart
+    |       getit_locator.dart
+    |
     +---services
         +---domain
-        ª   +---database
-        ª   ª       api_repository.dart
-        ª   ª       request_handler.dart
-        ª   ª
-        ª   +---localstorage
-        ª           hive_config.dart
-        ª
+        |   +---database
+        |   |       api_repository.dart
+        |   |       request_handler.dart
+        |   |
+        |   +---localstorage
+        |           hive_config.dart
+        |
         +---localization
-        ª       choose_language_screen.dart
-        ª       language_controller.dart
-        ª       language_model.dart
-        ª       localization_controller.dart
-        ª       translate.dart
-        ª       translator_helper.dart
-        ª
+        |       choose_language_screen.dart
+        |       language_controller.dart
+        |       language_model.dart
+        |       localization_controller.dart
+        |       translate.dart
+        |       translator_helper.dart
+        |
         +---settings
-        ª       main_settings.dart
-        ª
+        |       main_settings.dart
+        |
         +---theme
-            ª   dark_theme.dart
-            ª   light_theme.dart
-            ª   theme_controller.dart
-            ª
+            |   dark_theme.dart
+            |   light_theme.dart
+            |   theme_controller.dart
+            |
             +---extensions
                     color_theme.dart
 ```
