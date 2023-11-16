@@ -3,7 +3,7 @@ import 'package:crud_with_softic/src/constants/app_constants.dart';
 import 'package:crud_with_softic/src/features/settings/controllers/language_controller.dart';
 import 'package:crud_with_softic/src/services/localization/localization_controller.dart';
 import 'package:crud_with_softic/src/constants/assets.dart';
-import 'package:crud_with_softic/src/services/localization/language_model.dart';
+import 'package:crud_with_softic/src/services/localization/repository/model/app_language.dart';
 import 'package:get/get.dart';
 
 class ChooseLanguageScreen extends StatelessWidget {
@@ -60,7 +60,7 @@ class ChooseLanguageScreen extends StatelessWidget {
                                     AppConstants
                                         .languages[
                                             languageController.selectIndex]
-                                        .languageCode!,
+                                        .languageCode,
                                     AppConstants
                                         .languages[
                                             languageController.selectIndex]
@@ -84,7 +84,7 @@ class ChooseLanguageScreen extends StatelessWidget {
 
   Widget _languageWidget(
       {required BuildContext context,
-      required LanguageModel languageModel,
+      required AppLanguage languageModel,
       required LanguageController languageController,
       required int index}) {
     return InkWell(
@@ -128,7 +128,7 @@ class ChooseLanguageScreen extends StatelessWidget {
                 children: [
                   const SizedBox(width: 30),
                   Text(
-                    languageModel.languageName ?? 'English',
+                    languageModel.languageName,
                   ),
                 ],
               ),

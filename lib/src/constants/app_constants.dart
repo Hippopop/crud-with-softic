@@ -1,18 +1,18 @@
 import 'package:crud_with_softic/src/constants/assets.dart';
-import 'package:crud_with_softic/src/services/localization/language_model.dart';
+import 'package:crud_with_softic/src/services/localization/repository/model/app_language.dart';
 
 class AppConstants {
   static const String countryCode = 'country_code';
   static const String languageCode = 'language_code';
 
-  static List<LanguageModel> languages = [
-    LanguageModel(
+  static List<AppLanguage> languages = [
+    AppLanguage(
       imageUrl: Assets.us,
       languageName: 'ENGLISH',
       countryCode: 'US',
       languageCode: 'en',
     ),
-    LanguageModel(
+    AppLanguage(
       imageUrl: Assets.bd,
       languageName: 'বাংলা',
       countryCode: 'BD',

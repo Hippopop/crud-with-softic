@@ -26,7 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: colorTheme?.themeColor,
       body: SafeArea(
         bottom: false,
-        child: PageView(
+        child: ExpansionTile(
+          title: Text(''),
+          
+        )
+        /* PageView(
           onPageChanged: (value) {
             setState(() {
               currentIndex =  value;
@@ -38,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ProductPage(),
             ProfilePage(),
           ],
-        ),
+        ) */
+        ,
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

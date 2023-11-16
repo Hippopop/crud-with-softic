@@ -1,7 +1,7 @@
 import 'package:crud_with_softic/src/constants/app_constants.dart';
 import 'package:get/get.dart';
 
-import '../../../services/localization/language_model.dart';
+import '../../../services/localization/repository/model/app_language.dart';
 
 class LanguageController extends GetxController {
   int selectIndex = 0;
@@ -11,5 +11,5 @@ class LanguageController extends GetxController {
     update();
   }
 
-  List<LanguageModel> get languages => AppConstants.languages;
+  List<AppLanguage> get languages => AppConstants.languages;
 }

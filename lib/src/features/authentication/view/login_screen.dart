@@ -54,7 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           ConstrainedBox(
                             constraints: const BoxConstraints(
-                                maxWidth: double.infinity, maxHeight: 300),
+                              maxWidth: double.infinity,
+                              maxHeight: 300,
+                            ),
                             child: Image.asset(Assets.login),
                           ),
                           Text(

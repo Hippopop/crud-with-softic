@@ -4,7 +4,6 @@
     "welcome": "Hey there! 👋",
     "empty_pass_err": "Password can not be empty!",
     "empty_user_err": "User Name can not be empty!",
-    "pass_forgot": "Forgot Password?",
     "user_hint": "Mr. Example",
     "home" : "Home",
     "profile" : "Profile",
